@@ -233,71 +233,71 @@
 
 <script>
 // ============================================================
-// CONFIGURA&#199;&#195;O
+// CONFIGURA\u00c7\u00c3O
 // ============================================================
 // Cole aqui a URL do Google Apps Script Web App (POST endpoint).
-// Quando vazio, os dados ficam s&#243; no console (modo desenvolvimento).
+// Quando vazio, os dados ficam s\u00f3 no console (modo desenvolvimento).
 const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbxVqrnCwSmXjONegQw_Kri8ogKxFcTcg4ihTzfEH_Gr_20f4ioDz0N-aov_nT9-C3hR/exec";
 
 const QUIZ = {
-  title: "Quiz Conscientiza&#231;&#227;o TAG",
+  title: "Quiz Conscientiza\u00e7\u00e3o TAG",
   questions: [
     // ============= PHISHING (5) =============
     {
       section: "phishing",
-      q: "Qual destes &#233; o sinal MAIS cl&#225;ssico de phishing?",
+      q: "Qual destes \u00e9 o sinal MAIS cl\u00e1ssico de phishing?",
       opts: [
-        "Mensagem com sauda&#231;&#227;o personalizada e nome completo",
-        "&#8220;Clique agora ou sua conta ser&#225; bloqueada em 24 horas&#8221;",
+        "Mensagem com sauda\u00e7\u00e3o personalizada e nome completo",
+        "\u201cClique agora ou sua conta ser\u00e1 bloqueada em 24 horas\u201d",
         "E-mail com assinatura formal e telefone de contato",
-        "Link que mostra o dom&#237;nio completo no rodap&#233;",
+        "Link que mostra o dom\u00ednio completo no rodap\u00e9",
       ],
       correct: 1,
-      ok: "Boa! Senso de urg&#234;ncia &#233; o gatilho favorito do phisher. Quando o e-mail empurra voc&#234; a clicar AGORA, &#233; hora de respirar fundo.",
-      no: "Repensa esse: urg&#234;ncia artificial (&#8220;clique j&#225;&#8221;, &#8220;vai expirar&#8221;) &#233; o sinal #1 de phishing. Os outros s&#227;o justamente marcas de mensagem leg&#237;tima.",
+      ok: "Boa! Senso de urg\u00eancia \u00e9 o gatilho favorito do phisher. Quando o e-mail empurra voc\u00ea a clicar AGORA, \u00e9 hora de respirar fundo.",
+      no: "Repensa esse: urg\u00eancia artificial (\u201cclique j\u00e1\u201d, \u201cvai expirar\u201d) \u00e9 o sinal #1 de phishing. Os outros s\u00e3o justamente marcas de mensagem leg\u00edtima.",
     },
     {
       section: "phishing",
-      q: "Voc&#234; recebeu um e-mail do &#8220;Banco Brasilis&#8221; vindo de banco-brasilis.com.br. O dom&#237;nio oficial do banco &#233; brasilis.com.br. O que voc&#234; faz?",
+      q: "Voc\u00ea recebeu um e-mail do \u201cBanco Brasilis\u201d vindo de banco-brasilis.com.br. O dom\u00ednio oficial do banco \u00e9 brasilis.com.br. O que voc\u00ea faz?",
       opts: [
         "Clico no link rapidamente, antes que expire",
-        "Respondo pedindo que confirmem se &#233; mesmo do banco",
-        "N&#227;o clico em nada e reporto &#224; Seguran&#231;a da Informa&#231;&#227;o",
+        "Respondo pedindo que confirmem se \u00e9 mesmo do banco",
+        "N\u00e3o clico em nada e reporto \u00e0 Seguran\u00e7a da Informa\u00e7\u00e3o",
         "Encaminho pra equipe pra todos opinarem",
       ],
       correct: 2,
-      ok: "Exato. Dom&#237;nio com h&#237;fen ou sufixo a mais &#233; um truque velho. Reportar pra SI protege o time inteiro &#8212; voc&#234; acabou de fazer a coisa certa.",
-      no: "Olha de novo: o dom&#237;nio TEM um h&#237;fen a mais que o oficial. Isso &#233; phishing. Nunca responda nem encaminhe &#8212; s&#243; reporte pelo canal oficial.",
+      ok: "Exato. Dom\u00ednio com h\u00edfen ou sufixo a mais \u00e9 um truque velho. Reportar pra SI protege o time inteiro \u2014 voc\u00ea acabou de fazer a coisa certa.",
+      no: "Olha de novo: o dom\u00ednio TEM um h\u00edfen a mais que o oficial. Isso \u00e9 phishing. Nunca responda nem encaminhe \u2014 s\u00f3 reporte pelo canal oficial.",
     },
     {
       section: "phishing",
-      q: "Em qual destas situa&#231;&#245;es voc&#234; JAMAIS deve fornecer sua senha corporativa?",
+      q: "Em qual destas situa\u00e7\u00f5es voc\u00ea JAMAIS deve fornecer sua senha corporativa?",
       opts: [
-        "Numa liga&#231;&#227;o onde o atendente se identifica como &#8220;TI&#8221;",
-        "Num e-mail urgente pedindo pra &#8220;validar a conta&#8221;",
-        "Num formul&#225;rio Google Forms enviado por SMS",
-        "Em todas as situa&#231;&#245;es acima",
+        "Numa liga\u00e7\u00e3o onde o atendente se identifica como \u201cTI\u201d",
+        "Num e-mail urgente pedindo pra \u201cvalidar a conta\u201d",
+        "Num formul\u00e1rio Google Forms enviado por SMS",
+        "Em todas as situa\u00e7\u00f5es acima",
       ],
       correct: 3,
-      ok: "Isso. TI de verdade nunca pede sua senha. Nem por telefone, nem por e-mail, nem por formul&#225;rio. Se pediu &#8212; &#233; golpe.",
-      no: "Cuidado: TI leg&#237;tima NUNCA pede sua senha por canal nenhum. Todas as situa&#231;&#245;es listadas s&#227;o varia&#231;&#245;es do mesmo golpe &#8212; engenharia social.",
+      ok: "Isso. TI de verdade nunca pede sua senha. Nem por telefone, nem por e-mail, nem por formul\u00e1rio. Se pediu \u2014 \u00e9 golpe.",
+      no: "Cuidado: TI leg\u00edtima NUNCA pede sua senha por canal nenhum. Todas as situa\u00e7\u00f5es listadas s\u00e3o varia\u00e7\u00f5es do mesmo golpe \u2014 engenharia social.",
     },
     {
       section: "phishing",
-      q: "Voc&#234; desconfia de um e-mail estranho. Qual &#233; a PRIMEIRA coisa a fazer?",
+      q: "Voc\u00ea desconfia de um e-mail estranho. Qual \u00e9 a PRIMEIRA coisa a fazer?",
       opts: [
         "Apagar imediatamente",
-        "Responder perguntando se &#233; golpe",
-        "N&#227;o clicar, n&#227;o responder, e reportar &#224; Seguran&#231;a",
+        "Responder perguntando se \u00e9 golpe",
+        "N\u00e3o clicar, n\u00e3o responder, e reportar \u00e0 Seguran\u00e7a",
         "Encaminhar pros colegas pra ver se receberam",
       ],
       correct: 2,
-      ok: "Esse &#233; o reflexo certo. Reportar antes de apagar permite que a SI bloqueie o dom&#237;nio pra todo mundo da TAG.",
-      no: "Apagar &#233; instinto natural, mas faz a SI perder evid&#234;ncia. Reporte primeiro &#8212; apaga depois, se confirmarem.",
+      ok: "Esse \u00e9 o reflexo certo. Reportar antes de apagar permite que a SI bloqueie o dom\u00ednio pra todo mundo da TAG.",
+      no: "Apagar \u00e9 instinto natural, mas faz a SI perder evid\u00eancia. Reporte primeiro \u2014 apaga depois, se confirmarem.",
     },
     {
       section: "phishing",
-      q: "Aproximadamente quantos ataques cibern&#233;ticos come&#231;am com phishing?",
+      q: "Aproximadamente quantos ataques cibern\u00e9ticos come\u00e7am com phishing?",
       opts: [
         "1 em cada 10",
         "5 em cada 10",
@@ -305,26 +305,26 @@ const QUIZ = {
         "9 em cada 10",
       ],
       correct: 3,
-      ok: "&#201; isso. 9 em 10. Phishing &#233; a porta de entrada favorita do crime digital &#8212; e quem cuida dessa porta &#233; voc&#234;.",
-      no: "&#201; mais do que parece: 9 em cada 10 ataques come&#231;am com phishing. Por isso refor&#231;ar o fator humano vale tanto quanto qualquer firewall.",
+      ok: "\u00c9 isso. 9 em 10. Phishing \u00e9 a porta de entrada favorita do crime digital \u2014 e quem cuida dessa porta \u00e9 voc\u00ea.",
+      no: "\u00c9 mais do que parece: 9 em cada 10 ataques come\u00e7am com phishing. Por isso refor\u00e7ar o fator humano vale tanto quanto qualquer firewall.",
     },
     // ============= SENHAS (5) =============
     {
       section: "senhas",
-      q: "Qual destas &#233; a senha MAIS segura?",
+      q: "Qual destas \u00e9 a senha MAIS segura?",
       opts: [
         "cafe123",
         "Cafe@2024",
-        "Caf&#233;-da-manh&#227; 2x na semana!",
+        "Caf\u00e9-da-manh\u00e3 2x na semana!",
         "MinhaSenha123!",
       ],
       correct: 2,
-      ok: "Exato. Frase-senha longa &#233; o padr&#227;o-ouro: ~28 caracteres, mistura tipos e ainda &#233; f&#225;cil de lembrar.",
-      no: "Comprimento ganha de complexidade. &#8220;Caf&#233;-da-manh&#227; 2x na semana!&#8221; tem 28 caracteres &#8212; leva s&#233;culos pra quebrar. As outras seriam quebradas em horas ou minutos.",
+      ok: "Exato. Frase-senha longa \u00e9 o padr\u00e3o-ouro: ~28 caracteres, mistura tipos e ainda \u00e9 f\u00e1cil de lembrar.",
+      no: "Comprimento ganha de complexidade. \u201cCaf\u00e9-da-manh\u00e3 2x na semana!\u201d tem 28 caracteres \u2014 leva s\u00e9culos pra quebrar. As outras seriam quebradas em horas ou minutos.",
     },
     {
       section: "senhas",
-      q: "Quanto tempo um atacante leva pra quebrar a senha &#8220;123456&#8221;?",
+      q: "Quanto tempo um atacante leva pra quebrar a senha \u201c123456\u201d?",
       opts: [
         "1 hora",
         "1 minuto",
@@ -332,47 +332,47 @@ const QUIZ = {
         "Menos de 1 segundo",
       ],
       correct: 3,
-      ok: "&#201; instant&#226;neo. &#8220;123456&#8221; est&#225; na primeira linha de qualquer lista de senhas usadas em ataques. Se voc&#234; usa, troca agora.",
-      no: "Bem mais r&#225;pido do que parece: menos de 1 segundo. Senhas curtas com padr&#227;o sequencial s&#227;o as primeiras testadas em qualquer ataque automatizado.",
+      ok: "\u00c9 instant\u00e2neo. \u201c123456\u201d est\u00e1 na primeira linha de qualquer lista de senhas usadas em ataques. Se voc\u00ea usa, troca agora.",
+      no: "Bem mais r\u00e1pido do que parece: menos de 1 segundo. Senhas curtas com padr\u00e3o sequencial s\u00e3o as primeiras testadas em qualquer ataque automatizado.",
     },
     {
       section: "senhas",
-      q: "Voc&#234; usa a mesma senha no Gmail e no sistema da TAG. Por que isso &#233; um problema?",
+      q: "Voc\u00ea usa a mesma senha no Gmail e no sistema da TAG. Por que isso \u00e9 um problema?",
       opts: [
-        "N&#227;o &#233; problema, &#233; mais pr&#225;tico",
+        "N\u00e3o \u00e9 problema, \u00e9 mais pr\u00e1tico",
         "Se uma vazar em qualquer lugar, todas as suas contas viram alvo",
-        "S&#243; &#233; problema se forem senhas curtas",
-        "S&#243; &#233; problema em sistemas externos",
+        "S\u00f3 \u00e9 problema se forem senhas curtas",
+        "S\u00f3 \u00e9 problema em sistemas externos",
       ],
       correct: 1,
-      ok: "Isso. Atacantes testam senhas vazadas em centenas de sistemas. &#8220;Credential stuffing&#8221; &#233; um dos ataques mais comuns hoje.",
-      no: "Reusar senha &#233; como ter a mesma chave pra casa, carro e cofre. Vazou em UM lugar (e vaza muito), vazaram todos.",
+      ok: "Isso. Atacantes testam senhas vazadas em centenas de sistemas. \u201cCredential stuffing\u201d \u00e9 um dos ataques mais comuns hoje.",
+      no: "Reusar senha \u00e9 como ter a mesma chave pra casa, carro e cofre. Vazou em UM lugar (e vaza muito), vazaram todos.",
     },
     {
       section: "senhas",
       q: "O que faz um gestor de senhas (tipo 1Password, Bitwarden, Keeper)?",
       opts: [
-        "Lembra suas senhas e preenche por voc&#234;",
-        "Gera senhas longas e &#250;nicas pra cada sistema",
+        "Lembra suas senhas e preenche por voc\u00ea",
+        "Gera senhas longas e \u00fanicas pra cada sistema",
         "Avisa quando alguma senha sua aparece em vazamento",
         "Todas as anteriores",
       ],
       correct: 3,
-      ok: "Exato. Voc&#234; lembra de UMA senha mestra; o gestor cuida do resto. &#201; a &#250;nica forma realista de ter senhas &#250;nicas e longas em todo lugar.",
-      no: "Gestor de senhas faz TODAS essas coisas. &#201; a ferramenta que torna &#8220;senha forte em cada sistema&#8221; vi&#225;vel no dia a dia.",
+      ok: "Exato. Voc\u00ea lembra de UMA senha mestra; o gestor cuida do resto. \u00c9 a \u00fanica forma realista de ter senhas \u00fanicas e longas em todo lugar.",
+      no: "Gestor de senhas faz TODAS essas coisas. \u00c9 a ferramenta que torna \u201csenha forte em cada sistema\u201d vi\u00e1vel no dia a dia.",
     },
     {
       section: "senhas",
-      q: "Ativar MFA (segundo fator de autentica&#231;&#227;o) protege principalmente contra&#8230;",
+      q: "Ativar MFA (segundo fator de autentica\u00e7\u00e3o) protege principalmente contra\u2026",
       opts: [
         "Senhas curtas",
         "Senhas reutilizadas",
         "Ataques de phishing que roubaram sua senha",
-        "V&#237;rus no seu computador",
+        "V\u00edrus no seu computador",
       ],
       correct: 2,
-      ok: "Boa. Mesmo que o atacante tenha sua senha (porque caiu num phishing, por exemplo), sem o segundo fator ele n&#227;o entra. MFA &#233; o &#8220;freio de m&#227;o&#8221; da sua conta.",
-      no: "MFA &#233; justamente a segunda barreira: se sua senha vazar ou for roubada, o atacante PRECISA do c&#243;digo do app/SMS pra entrar &#8212; e ele n&#227;o tem.",
+      ok: "Boa. Mesmo que o atacante tenha sua senha (porque caiu num phishing, por exemplo), sem o segundo fator ele n\u00e3o entra. MFA \u00e9 o \u201cfreio de m\u00e3o\u201d da sua conta.",
+      no: "MFA \u00e9 justamente a segunda barreira: se sua senha vazar ou for roubada, o atacante PRECISA do c\u00f3digo do app/SMS pra entrar \u2014 e ele n\u00e3o tem.",
     },
   ],
 };
@@ -404,19 +404,19 @@ $("#form-intro").addEventListener("submit", e => {
 });
 
 $("#btn-vr").addEventListener("click", () => {
-  // numera os visitantes pra distinguir entradas an&#244;nimas
+  // numera os visitantes pra distinguir entradas an\u00f4nimas
   const ts = new Date().toISOString().slice(11,19).replace(/:/g,'');
   startQuiz(`Visitante VR ${ts}`);
 });
 
 // ============================================================
-// TECLADO VIRTUAL on-screen &#8212; pra VR (controlador clica nas teclas)
+// TECLADO VIRTUAL on-screen \u2014 pra VR (controlador clica nas teclas)
 // ============================================================
 (function setupVirtualKeyboard(){
   const inputNome = document.getElementById("nome");
   let capsOn = false;
 
-  // converter cada .vk-row (string "q w e r ...") em bot&#245;es clic&#225;veis
+  // converter cada .vk-row (string "q w e r ...") em bot\u00f5es clic\u00e1veis
   document.querySelectorAll(".vk-row").forEach(row => {
     const letters = row.textContent.trim().split(/\s+/);
     row.innerHTML = "";
@@ -444,7 +444,7 @@ $("#btn-vr").addEventListener("click", () => {
     document.querySelector('[data-vk-key="caps"]')?.classList.toggle("active", capsOn);
   }
 
-  // delega&#231;&#227;o de clique
+  // delega\u00e7\u00e3o de clique
   document.getElementById("vk").addEventListener("click", e => {
     const k = e.target.closest("[data-vk-key], [data-vk-char]");
     if (!k) return;
@@ -466,10 +466,10 @@ $("#btn-vr").addEventListener("click", () => {
   refreshCaps();
 })();
 
-// se estamos dentro de iframe (Frame VR), destacar o bot&#227;o VR
+// se estamos dentro de iframe (Frame VR), destacar o bot\u00e3o VR
 if (window.self !== window.top) {
   document.documentElement.classList.add("in-iframe");
-  // dar mais destaque ao bot&#227;o VR
+  // dar mais destaque ao bot\u00e3o VR
   document.getElementById("btn-vr")?.classList.remove("btn-secondary");
   document.getElementById("btn-vr")?.classList.add("btn-primary");
   document.getElementById("btn-vr")?.style.setProperty("box-shadow", "0 0 30px rgba(62,197,255,.6)");
@@ -486,7 +486,7 @@ function renderQuestion(i){
   sec.classList.remove("phishing","senhas");
   sec.classList.add(q.section);
   $("#section-name").textContent = SECTION_NAMES[q.section];
-  $("#section-label").textContent = q.section === "phishing" ? "Esta&#231;&#227;o 1" : "Esta&#231;&#227;o 2";
+  $("#section-label").textContent = q.section === "phishing" ? "Esta\u00e7\u00e3o 1" : "Esta\u00e7\u00e3o 2";
   $("#question-text").textContent = q.q;
   const optsEl = $("#options");
   optsEl.innerHTML = "";
@@ -524,7 +524,7 @@ function answer(idx){
   fb.innerHTML = `<strong>${correct ? "Acertou" : "Quase"}</strong>${correct ? q.ok : q.no}`;
   const next = $("#btn-next");
   next.classList.remove("hidden");
-  next.textContent = (state.current + 1 < QUIZ.questions.length) ? "Pr&#243;xima &#8594;" : "Ver resultado &#8594;";
+  next.textContent = (state.current + 1 < QUIZ.questions.length) ? "Pr\u00f3xima \u2192" : "Ver resultado \u2192";
 }
 
 $("#btn-next").addEventListener("click", () => {
@@ -546,19 +546,19 @@ function showResult(){
   numEl.className = "result-num " + (score >= 8 ? "high" : score >= 5 ? "mid" : "low");
   $("#result-frac").textContent = `de ${total} acertos`;
   let head, msg;
-  const primeiro = (state.nome.split(" ")[0]) || "voc&#234;";
+  const primeiro = (state.nome.split(" ")[0]) || "voc\u00ea";
   if (score === total){
     head = `Mandou bem, ${primeiro}!`;
-    msg = "Nota m&#225;xima. Conscientiza&#231;&#227;o &#233; jornada &#8212; mant&#233;m o h&#225;bito de desconfiar do urgente, senha forte, MFA ativo, e compartilha esse padr&#227;o com o time.";
+    msg = "Nota m\u00e1xima. Conscientiza\u00e7\u00e3o \u00e9 jornada \u2014 mant\u00e9m o h\u00e1bito de desconfiar do urgente, senha forte, MFA ativo, e compartilha esse padr\u00e3o com o time.";
   } else if (score >= 7){
     head = `Boa, ${primeiro}!`;
-    msg = "Voc&#234; acertou a maioria. Revisa os pontos que escaparam abaixo &#8212; fator humano se constr&#243;i com pr&#225;tica repetida.";
+    msg = "Voc\u00ea acertou a maioria. Revisa os pontos que escaparam abaixo \u2014 fator humano se constr\u00f3i com pr\u00e1tica repetida.";
   } else if (score >= 4){
     head = `Tem caminho, ${primeiro}.`;
-    msg = "Acertou alguns, errou outros. Volta nessa esta&#231;&#227;o quantas vezes precisar &#8212; o objetivo &#233; construir cultura, n&#227;o atestar perfei&#231;&#227;o.";
+    msg = "Acertou alguns, errou outros. Volta nessa esta\u00e7\u00e3o quantas vezes precisar \u2014 o objetivo \u00e9 construir cultura, n\u00e3o atestar perfei\u00e7\u00e3o.";
   } else {
     head = `Vamos juntos, ${primeiro}.`;
-    msg = "Sem pegadinha &#8212; quem ainda n&#227;o tem pr&#225;tica &#233; justamente quem precisa do programa. Volta sempre. Coloque o fator humano no centro da seguran&#231;a.";
+    msg = "Sem pegadinha \u2014 quem ainda n\u00e3o tem pr\u00e1tica \u00e9 justamente quem precisa do programa. Volta sempre. Coloque o fator humano no centro da seguran\u00e7a.";
   }
   $("#result-headline").textContent = head;
   $("#result-message").textContent = msg;
@@ -568,8 +568,8 @@ function showResult(){
     const q = QUIZ.questions[a.idx];
     const item = document.createElement("div");
     item.className = "recap-item " + (a.correct ? "ok" : "no");
-    const txt = q.q.length > 78 ? q.q.slice(0, 78) + "&#8230;" : q.q;
-    item.innerHTML = `<span class="dot"></span><span><strong style="color:#fff">Q${a.idx+1}.</strong> ${txt} <em style="color:${a.correct?'var(--green)':'var(--red)'};font-style:normal;font-weight:700">${a.correct?"&#10003;":"&#10007;"}</em></span>`;
+    const txt = q.q.length > 78 ? q.q.slice(0, 78) + "\u2026" : q.q;
+    item.innerHTML = `<span class="dot"></span><span><strong style="color:#fff">Q${a.idx+1}.</strong> ${txt} <em style="color:${a.correct?'var(--green)':'var(--red)'};font-style:normal;font-weight:700">${a.correct?"\u2713":"\u2717"}</em></span>`;
     recap.appendChild(item);
   });
   sendData(score, total);
@@ -605,11 +605,11 @@ async function sendData(score, total){
       headers: {"Content-Type":"text/plain;charset=utf-8"},
       body: JSON.stringify(payload),
     });
-    $("#send-status").textContent = "Respostas enviadas &#10003;";
+    $("#send-status").textContent = "Respostas enviadas \u2713";
     $("#send-status").classList.add("sent");
   } catch(err) {
     console.error("envio falhou:", err);
-    $("#send-status").textContent = "N&#227;o consegui enviar suas respostas. Recarregue e tente de novo, ou avise a TI.";
+    $("#send-status").textContent = "N\u00e3o consegui enviar suas respostas. Recarregue e tente de novo, ou avise a TI.";
     $("#send-status").classList.add("fail");
   }
 }
