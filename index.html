@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quiz Conscientiza√ß√£o ¬∑ TAG √ó CULTSEC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000; --bg-card:#110820; --bg-card-2:#160a28;
+    --white:#fff; --muted:#b8b3c9;
+    --neon-blue:#3ec5ff; --neon-pink:#ff4ec4; --neon-purple:#b14cff;
+    --gold:#ffd84d; --green:#54f0a8; --red:#ff5577;
+    --tag-blue:#00aaff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{color-scheme:dark; background:#000;}
+  html,body{height:100%; background-color:#000;}
+  body{
+    background-color:#000;
+    background-image:
+      radial-gradient(circle at 80% 0%, rgba(255,78,196,.18) 0%, transparent 50%),
+      radial-gradient(circle at 10% 100%, rgba(62,197,255,.15) 0%, transparent 60%);
+    background-attachment:fixed;
+    color:#fff;
+    font-family:"DM Sans","Inter",-apple-system,system-ui,sans-serif;
+    min-height:100%;
+    display:flex; align-items:center; justify-content:center;
+    padding:24px;
+    position:relative;
+  }
+  body::before{
+    content:""; position:fixed; inset:0;
+    background-image:
+      linear-gradient(rgba(177,76,255,.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(177,76,255,.06) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(ellipse at center, black 30%, transparent 80%);
+    -webkit-mask-image:radial-gradient(ellipse at center, black 30%, transparent 80%);
+    pointer-events:none;
+  }
+  .card{
+    width:100%; max-width:760px;
+    background:linear-gradient(180deg, var(--bg-card) 0%, var(--bg-card-2) 100%);
+    border:1px solid rgba(177,76,255,.35);
+    border-radius:24px; padding:42px 36px;
+    box-shadow:0 30px 90px rgba(255,78,196,.10), 0 0 0 1px rgba(255,255,255,.02) inset;
+    position:relative; z-index:1;
+    color:#fff;
+  }
+  .header{display:flex; align-items:center; gap:14px; margin-bottom:28px;}
+  .logo{width:46px;height:46px;border-radius:10px;
+        background:radial-gradient(circle at 30% 30%, #fff, transparent 60%), linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+        display:grid; place-items:center; font-weight:900; font-size:18px; color:#fff;}
+  .brand{font-weight:900; letter-spacing:.04em; color:#fff;}
+  .brand .cs{color:var(--neon-pink)}
+  .brand .tag{color:var(--tag-blue)}
+  .brand .x{color:var(--muted); margin:0 6px}
+  .kicker{font-size:11px; letter-spacing:.32em; color:var(--neon-blue); font-weight:700; text-transform:uppercase; margin-bottom:14px;}
+  .kicker.pink{color:var(--neon-pink)}
+  h1{font-size:38px; line-height:1.05; font-weight:900; letter-spacing:-.02em; margin-bottom:14px; color:#fff;}
+  h1 em{color:var(--neon-pink); font-style:normal}
+  p.lead{color:var(--muted); font-size:16px; line-height:1.5; margin-bottom:22px;}
+  .field{display:block; margin-bottom:18px;}
+  .field label{display:block; font-size:12px; letter-spacing:.16em; color:var(--muted); text-transform:uppercase; font-weight:700; margin-bottom:8px;}
+  .field input{
+    width:100%; padding:14px 16px; font-size:16px; color:#fff; font-family:inherit;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18); border-radius:12px;
+    transition:border-color .2s, box-shadow .2s;
+  }
+  .field input:focus{outline:none; border-color:var(--neon-pink); box-shadow:0 0 0 3px rgba(255,78,196,.18)}
+  .field input::placeholder{color:rgba(255,255,255,.35)}
+  .actions{display:flex; gap:12px; justify-content:flex-end; margin-top:8px; flex-wrap:wrap;}
+  button{
+    cursor:pointer; font-family:inherit; font-weight:700; font-size:15px;
+    padding:14px 22px; border-radius:12px; border:0; color:#fff;
+    transition:transform .12s ease-out, box-shadow .2s, background .2s, opacity .2s;
+  }
+  button:hover{transform:translateY(-1px)}
+  button:disabled{opacity:.4; cursor:not-allowed; transform:none}
+  .btn-primary{background:var(--neon-pink); color:#fff; box-shadow:0 0 22px rgba(255,78,196,.45)}
+  .btn-primary:hover{background:#ff66cd}
+  .btn-secondary{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.22)}
+  .btn-secondary:hover{border-color:rgba(255,255,255,.5)}
+  .progress{height:6px; background:rgba(255,255,255,.08); border-radius:99px; overflow:hidden; margin-bottom:28px;}
+  .progress > div{height:100%; background:linear-gradient(90deg, var(--neon-blue), var(--neon-pink)); width:0%; transition:width .4s ease-out;}
+  .step-counter{font-size:11px; letter-spacing:.3em; color:var(--muted); text-transform:uppercase; font-weight:700; margin-bottom:10px;}
+  .question{font-size:22px; font-weight:700; line-height:1.3; margin-bottom:22px; color:#fff;}
+  .options{display:flex; flex-direction:column; gap:10px; margin-bottom:22px;}
+  .opt{
+    text-align:left; padding:16px 18px; border-radius:12px;
+    background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14);
+    color:#fff; font-size:15px; line-height:1.4; font-weight:500;
+    cursor:pointer; transition:all .15s ease-out; position:relative;
+  }
+  .opt:hover{background:rgba(177,76,255,.12); border-color:var(--neon-purple)}
+  .opt[data-state="correct"]{background:rgba(84,240,168,.18); border-color:var(--green); color:#d8ffe9;}
+  .opt[data-state="wrong"]{background:rgba(255,85,119,.18); border-color:var(--red); color:#ffd0d8;}
+  .opt[data-state="missed"]{background:rgba(84,240,168,.10); border-color:rgba(84,240,168,.55); color:#b9efd2;}
+  .opt[data-state="muted"]{opacity:.55}
+  .opt .letter{display:inline-block; width:28px; font-weight:700; color:var(--neon-pink); margin-right:8px;}
+  .opt[data-state="correct"] .letter{color:var(--green)}
+  .opt[data-state="wrong"] .letter{color:var(--red)}
+  .feedback{
+    padding:14px 16px; border-radius:12px; font-size:14px; line-height:1.5;
+    margin-bottom:22px; display:none;
+    border:1px solid; font-weight:500;
+  }
+  .feedback.show{display:block; animation:fadein .25s ease-out}
+  .feedback.correct{background:rgba(84,240,168,.14); border-color:var(--green); color:#d8ffe9}
+  .feedback.wrong{background:rgba(255,85,119,.14); border-color:var(--red); color:#ffd0d8}
+  .feedback strong{display:block; font-size:13px; letter-spacing:.06em; margin-bottom:4px; text-transform:uppercase}
+  @keyframes fadein{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)}}
+  .result-num{font-size:96px; font-weight:900; line-height:1; letter-spacing:-.04em; margin:14px 0 4px}
+  .result-num.high{color:var(--green)}
+  .result-num.mid{color:var(--gold)}
+  .result-num.low{color:var(--red)}
+  .result-frac{font-size:18px; color:var(--muted); font-weight:500; letter-spacing:.04em; margin-bottom:24px;}
+  .hidden{display:none !important}
+  .recap{margin-top:18px; padding-top:18px; border-top:1px solid rgba(255,255,255,.10);}
+  .recap-item{display:flex; gap:10px; align-items:flex-start; font-size:13px; color:var(--muted); margin-bottom:8px; line-height:1.45;}
+  .recap-item .dot{flex-shrink:0; width:10px; height:10px; border-radius:99px; margin-top:5px;}
+  .recap-item.ok .dot{background:var(--green)}
+  .recap-item.no .dot{background:var(--red)}
+  .send-status{font-size:11px; color:var(--muted); letter-spacing:.08em; text-align:center; margin-top:12px;}
+  .send-status.sent{color:var(--green)}
+  .send-status.fail{color:var(--red)}
+  .section-header{
+    display:flex; align-items:center; gap:10px; margin:0 0 18px;
+    padding:14px 16px; background:rgba(255,255,255,.04);
+    border-radius:12px; border:1px solid rgba(255,255,255,.10);
+  }
+  .section-header .dot{width:10px; height:10px; border-radius:99px;}
+  .section-header.phishing .dot{background:var(--neon-pink); box-shadow:0 0 12px var(--neon-pink)}
+  .section-header.senhas .dot{background:var(--neon-blue); box-shadow:0 0 12px var(--neon-blue)}
+  .section-header .label{font-size:11px; letter-spacing:.3em; font-weight:700; text-transform:uppercase; color:var(--muted)}
+  .section-header .name{font-weight:900; font-size:15px; letter-spacing:-.01em; color:#fff;}
+</style>
+</head>
+<body>
+<main class="card" id="card">
+
+  <!-- TELA 1: BOAS-VINDAS + FORM -->
+  <section id="screen-intro">
+    <div class="header">
+      <div class="logo">CS</div>
+      <div class="brand"><span class="cs">CULTSEC</span><span class="x">√ó</span><span class="tag">TAG</span></div>
+    </div>
+    <div class="kicker">Programa de Conscientiza√ß√£o TAG</div>
+    <h1>Quiz de <em>Conscientiza√ß√£o</em></h1>
+    <p class="lead">10 perguntas r√°pidas ‚Äî 5 sobre Phishing, 5 sobre Senhas. Voc√™ responde uma por vez, recebe feedback no ato, e ganha um score no final. Sem pegadinha: o objetivo √© construir cultura, n√£o te pegar.</p>
+    <form id="form-intro" autocomplete="off" novalidate>
+      <div class="field">
+        <label for="nome">Seu nome</label>
+        <input id="nome" name="nome" type="text" required placeholder="Como voc√™ gostaria de ser chamado" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">E-mail corporativo (opcional)</label>
+        <input id="email" name="email" type="email" placeholder="voce@tag.com.br" autocomplete="email">
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn-primary">Come√ßar ‚Üí</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- TELA 2: PERGUNTAS -->
+  <section id="screen-quiz" class="hidden">
+    <div class="progress"><div id="bar"></div></div>
+    <div class="step-counter" id="step-counter"></div>
+    <div class="section-header" id="section-header">
+      <span class="dot"></span>
+      <span class="label" id="section-label">Esta√ß√£o</span>
+      <span class="name" id="section-name">Phishing</span>
+    </div>
+    <div class="question" id="question-text"></div>
+    <div class="options" id="options"></div>
+    <div class="feedback" id="feedback"></div>
+    <div class="actions">
+      <button class="btn-primary hidden" id="btn-next">Pr√≥xima ‚Üí</button>
+    </div>
+  </section>
+
+  <!-- TELA 3: RESULTADO -->
+  <section id="screen-result" class="hidden">
+    <div class="kicker">Resultado</div>
+    <div class="result-num" id="result-num">0</div>
+    <div class="result-frac" id="result-frac"></div>
+    <h1 id="result-headline">Boa!</h1>
+    <p class="lead" id="result-message"></p>
+    <div class="recap" id="recap"></div>
+    <div class="actions">
+      <button class="btn-secondary" id="btn-restart">Jogar de novo</button>
+    </div>
+    <div class="send-status" id="send-status">Enviando suas respostas‚Ä¶</div>
+  </section>
+
+</main>
+
+<script>
+// ============================================================
+// CONFIGURA√á√ÉO
+// ============================================================
+// Cole aqui a URL do Google Apps Script Web App (POST endpoint).
+// Quando vazio, os dados ficam s√≥ no console (modo desenvolvimento).
+const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbxVqrnCwSmXjONegQw_Kri8ogKxFcTcg4ihTzfEH_Gr_20f4ioDz0N-aov_nT9-C3hR/exec";
+
+const QUIZ = {
+  title: "Quiz Conscientiza√ß√£o TAG",
+  questions: [
+    // ============= PHISHING (5) =============
+    {
+      section: "phishing",
+      q: "Qual destes √© o sinal MAIS cl√°ssico de phishing?",
+      opts: [
+        "Mensagem com sauda√ß√£o personalizada e nome completo",
+        "‚ÄúClique agora ou sua conta ser√° bloqueada em 24 horas‚Äù",
+        "E-mail com assinatura formal e telefone de contato",
+        "Link que mostra o dom√≠nio completo no rodap√©",
+      ],
+      correct: 1,
+      ok: "Boa! Senso de urg√™ncia √© o gatilho favorito do phisher. Quando o e-mail empurra voc√™ a clicar AGORA, √© hora de respirar fundo.",
+      no: "Repensa esse: urg√™ncia artificial (‚Äúclique j√°‚Äù, ‚Äúvai expirar‚Äù) √© o sinal #1 de phishing. Os outros s√£o justamente marcas de mensagem leg√≠tima.",
+    },
+    {
+      section: "phishing",
+      q: "Voc√™ recebeu um e-mail do ‚ÄúBanco Brasilis‚Äù vindo de banco-brasilis.com.br. O dom√≠nio oficial do banco √© brasilis.com.br. O que voc√™ faz?",
+      opts: [
+        "Clico no link rapidamente, antes que expire",
+        "Respondo pedindo que confirmem se √© mesmo do banco",
+        "N√£o clico em nada e reporto √† Seguran√ßa da Informa√ß√£o",
+        "Encaminho pra equipe pra todos opinarem",
+      ],
+      correct: 2,
+      ok: "Exato. Dom√≠nio com h√≠fen ou sufixo a mais √© um truque velho. Reportar pra SI protege o time inteiro ‚Äî voc√™ acabou de fazer a coisa certa.",
+      no: "Olha de novo: o dom√≠nio TEM um h√≠fen a mais que o oficial. Isso √© phishing. Nunca responda nem encaminhe ‚Äî s√≥ reporte pelo canal oficial.",
+    },
+    {
+      section: "phishing",
+      q: "Em qual destas situa√ß√µes voc√™ JAMAIS deve fornecer sua senha corporativa?",
+      opts: [
+        "Numa liga√ß√£o onde o atendente se identifica como ‚ÄúTI‚Äù",
+        "Num e-mail urgente pedindo pra ‚Äúvalidar a conta‚Äù",
+        "Num formul√°rio Google Forms enviado por SMS",
+        "Em todas as situa√ß√µes acima",
+      ],
+      correct: 3,
+      ok: "Isso. TI de verdade nunca pede sua senha. Nem por telefone, nem por e-mail, nem por formul√°rio. Se pediu ‚Äî √© golpe.",
+      no: "Cuidado: TI leg√≠tima NUNCA pede sua senha por canal nenhum. Todas as situa√ß√µes listadas s√£o varia√ß√µes do mesmo golpe ‚Äî engenharia social.",
+    },
+    {
+      section: "phishing",
+      q: "Voc√™ desconfia de um e-mail estranho. Qual √© a PRIMEIRA coisa a fazer?",
+      opts: [
+        "Apagar imediatamente",
+        "Responder perguntando se √© golpe",
+        "N√£o clicar, n√£o responder, e reportar √† Seguran√ßa",
+        "Encaminhar pros colegas pra ver se receberam",
+      ],
+      correct: 2,
+      ok: "Esse √© o reflexo certo. Reportar antes de apagar permite que a SI bloqueie o dom√≠nio pra todo mundo da TAG.",
+      no: "Apagar √© instinto natural, mas faz a SI perder evid√™ncia. Reporte primeiro ‚Äî apaga depois, se confirmarem.",
+    },
+    {
+      section: "phishing",
+      q: "Aproximadamente quantos ataques cibern√©ticos come√ßam com phishing?",
+      opts: [
+        "1 em cada 10",
+        "5 em cada 10",
+        "7 em cada 10",
+        "9 em cada 10",
+      ],
+      correct: 3,
+      ok: "√â isso. 9 em 10. Phishing √© a porta de entrada favorita do crime digital ‚Äî e quem cuida dessa porta √© voc√™.",
+      no: "√â mais do que parece: 9 em cada 10 ataques come√ßam com phishing. Por isso refor√ßar o fator humano vale tanto quanto qualquer firewall.",
+    },
+    // ============= SENHAS (5) =============
+    {
+      section: "senhas",
+      q: "Qual destas √© a senha MAIS segura?",
+      opts: [
+        "cafe123",
+        "Cafe@2024",
+        "Caf√©-da-manh√£ 2x na semana!",
+        "MinhaSenha123!",
+      ],
+      correct: 2,
+      ok: "Exato. Frase-senha longa √© o padr√£o-ouro: ~28 caracteres, mistura tipos e ainda √© f√°cil de lembrar.",
+      no: "Comprimento ganha de complexidade. ‚ÄúCaf√©-da-manh√£ 2x na semana!‚Äù tem 28 caracteres ‚Äî leva s√©culos pra quebrar. As outras seriam quebradas em horas ou minutos.",
+    },
+    {
+      section: "senhas",
+      q: "Quanto tempo um atacante leva pra quebrar a senha ‚Äú123456‚Äù?",
+      opts: [
+        "1 hora",
+        "1 minuto",
+        "10 segundos",
+        "Menos de 1 segundo",
+      ],
+      correct: 3,
+      ok: "√â instant√¢neo. ‚Äú123456‚Äù est√° na primeira linha de qualquer lista de senhas usadas em ataques. Se voc√™ usa, troca agora.",
+      no: "Bem mais r√°pido do que parece: menos de 1 segundo. Senhas curtas com padr√£o sequencial s√£o as primeiras testadas em qualquer ataque automatizado.",
+    },
+    {
+      section: "senhas",
+      q: "Voc√™ usa a mesma senha no Gmail e no sistema da TAG. Por que isso √© um problema?",
+      opts: [
+        "N√£o √© problema, √© mais pr√°tico",
+        "Se uma vazar em qualquer lugar, todas as suas contas viram alvo",
+        "S√≥ √© problema se forem senhas curtas",
+        "S√≥ √© problema em sistemas externos",
+      ],
+      correct: 1,
+      ok: "Isso. Atacantes testam senhas vazadas em centenas de sistemas. ‚ÄúCredential stuffing‚Äù √© um dos ataques mais comuns hoje.",
+      no: "Reusar senha √© como ter a mesma chave pra casa, carro e cofre. Vazou em UM lugar (e vaza muito), vazaram todos.",
+    },
+    {
+      section: "senhas",
+      q: "O que faz um gestor de senhas (tipo 1Password, Bitwarden, Keeper)?",
+      opts: [
+        "Lembra suas senhas e preenche por voc√™",
+        "Gera senhas longas e √∫nicas pra cada sistema",
+        "Avisa quando alguma senha sua aparece em vazamento",
+        "Todas as anteriores",
+      ],
+      correct: 3,
+      ok: "Exato. Voc√™ lembra de UMA senha mestra; o gestor cuida do resto. √â a √∫nica forma realista de ter senhas √∫nicas e longas em todo lugar.",
+      no: "Gestor de senhas faz TODAS essas coisas. √â a ferramenta que torna ‚Äúsenha forte em cada sistema‚Äù vi√°vel no dia a dia.",
+    },
+    {
+      section: "senhas",
+      q: "Ativar MFA (segundo fator de autentica√ß√£o) protege principalmente contra‚Ä¶",
+      opts: [
+        "Senhas curtas",
+        "Senhas reutilizadas",
+        "Ataques de phishing que roubaram sua senha",
+        "V√≠rus no seu computador",
+      ],
+      correct: 2,
+      ok: "Boa. Mesmo que o atacante tenha sua senha (porque caiu num phishing, por exemplo), sem o segundo fator ele n√£o entra. MFA √© o ‚Äúfreio de m√£o‚Äù da sua conta.",
+      no: "MFA √© justamente a segunda barreira: se sua senha vazar ou for roubada, o atacante PRECISA do c√≥digo do app/SMS pra entrar ‚Äî e ele n√£o tem.",
+    },
+  ],
+};
+
+const SECTION_NAMES = {phishing: "Phishing", senhas: "Senhas"};
+
+const state = {
+  nome: "", email: "",
+  startedAt: null, finishedAt: null,
+  current: 0,
+  answers: [],
+};
+
+const $ = sel => document.querySelector(sel);
+const $$ = sel => document.querySelectorAll(sel);
+
+$("#form-intro").addEventListener("submit", e => {
+  e.preventDefault();
+  state.nome = $("#nome").value.trim();
+  state.email = $("#email").value.trim();
+  if (!state.nome) { $("#nome").focus(); return; }
+  state.startedAt = new Date().toISOString();
+  $("#screen-intro").classList.add("hidden");
+  $("#screen-quiz").classList.remove("hidden");
+  renderQuestion(0);
+});
+
+function renderQuestion(i){
+  state.current = i;
+  const q = QUIZ.questions[i];
+  const total = QUIZ.questions.length;
+  $("#bar").style.width = ((i/total)*100) + "%";
+  $("#step-counter").textContent = `Pergunta ${i+1} de ${total}`;
+  // section header
+  const sec = $("#section-header");
+  sec.classList.remove("phishing","senhas");
+  sec.classList.add(q.section);
+  $("#section-name").textContent = SECTION_NAMES[q.section];
+  $("#section-label").textContent = q.section === "phishing" ? "Esta√ß√£o 1" : "Esta√ß√£o 2";
+  $("#question-text").textContent = q.q;
+  const optsEl = $("#options");
+  optsEl.innerHTML = "";
+  q.opts.forEach((txt, idx) => {
+    const btn = document.createElement("button");
+    btn.className = "opt";
+    btn.type = "button";
+    btn.innerHTML = `<span class="letter">${String.fromCharCode(65+idx)})</span>${txt}`;
+    btn.addEventListener("click", () => answer(idx));
+    optsEl.appendChild(btn);
+  });
+  $("#feedback").className = "feedback";
+  $("#feedback").innerHTML = "";
+  $("#btn-next").classList.add("hidden");
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function answer(idx){
+  const q = QUIZ.questions[state.current];
+  const correct = (idx === q.correct);
+  state.answers.push({idx: state.current, choice: idx, correct});
+  const buttons = [...$$("#options .opt")];
+  buttons.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) {
+      b.dataset.state = (i === idx) ? "correct" : "missed";
+    } else if (i === idx) {
+      b.dataset.state = "wrong";
+    } else {
+      b.dataset.state = "muted";
+    }
+  });
+  const fb = $("#feedback");
+  fb.classList.add("show", correct ? "correct" : "wrong");
+  fb.innerHTML = `<strong>${correct ? "Acertou" : "Quase"}</strong>${correct ? q.ok : q.no}`;
+  const next = $("#btn-next");
+  next.classList.remove("hidden");
+  next.textContent = (state.current + 1 < QUIZ.questions.length) ? "Pr√≥xima ‚Üí" : "Ver resultado ‚Üí";
+}
+
+$("#btn-next").addEventListener("click", () => {
+  if (state.current + 1 < QUIZ.questions.length) {
+    renderQuestion(state.current + 1);
+  } else {
+    showResult();
+  }
+});
+
+function showResult(){
+  state.finishedAt = new Date().toISOString();
+  const total = QUIZ.questions.length;
+  const score = state.answers.filter(a => a.correct).length;
+  $("#screen-quiz").classList.add("hidden");
+  $("#screen-result").classList.remove("hidden");
+  const numEl = $("#result-num");
+  numEl.textContent = score;
+  numEl.className = "result-num " + (score >= 8 ? "high" : score >= 5 ? "mid" : "low");
+  $("#result-frac").textContent = `de ${total} acertos`;
+  let head, msg;
+  const primeiro = (state.nome.split(" ")[0]) || "voc√™";
+  if (score === total){
+    head = `Mandou bem, ${primeiro}!`;
+    msg = "Nota m√°xima. Conscientiza√ß√£o √© jornada ‚Äî mant√©m o h√°bito de desconfiar do urgente, senha forte, MFA ativo, e compartilha esse padr√£o com o time.";
+  } else if (score >= 7){
+    head = `Boa, ${primeiro}!`;
+    msg = "Voc√™ acertou a maioria. Revisa os pontos que escaparam abaixo ‚Äî fator humano se constr√≥i com pr√°tica repetida.";
+  } else if (score >= 4){
+    head = `Tem caminho, ${primeiro}.`;
+    msg = "Acertou alguns, errou outros. Volta nessa esta√ß√£o quantas vezes precisar ‚Äî o objetivo √© construir cultura, n√£o atestar perfei√ß√£o.";
+  } else {
+    head = `Vamos juntos, ${primeiro}.`;
+    msg = "Sem pegadinha ‚Äî quem ainda n√£o tem pr√°tica √© justamente quem precisa do programa. Volta sempre. Coloque o fator humano no centro da seguran√ßa.";
+  }
+  $("#result-headline").textContent = head;
+  $("#result-message").textContent = msg;
+  const recap = $("#recap");
+  recap.innerHTML = "";
+  state.answers.forEach(a => {
+    const q = QUIZ.questions[a.idx];
+    const item = document.createElement("div");
+    item.className = "recap-item " + (a.correct ? "ok" : "no");
+    const txt = q.q.length > 78 ? q.q.slice(0, 78) + "‚Ä¶" : q.q;
+    item.innerHTML = `<span class="dot"></span><span><strong style="color:#fff">Q${a.idx+1}.</strong> ${txt} <em style="color:${a.correct?'var(--green)':'var(--red)'};font-style:normal;font-weight:700">${a.correct?"‚úì":"‚úó"}</em></span>`;
+    recap.appendChild(item);
+  });
+  sendData(score, total);
+}
+
+async function sendData(score, total){
+  const payload = {
+    quiz: "conscientizacao_tag",
+    nome: state.nome,
+    email: state.email,
+    startedAt: state.startedAt,
+    finishedAt: state.finishedAt,
+    score, total,
+    score_phishing: state.answers.filter(a => a.correct && QUIZ.questions[a.idx].section === "phishing").length,
+    score_senhas:   state.answers.filter(a => a.correct && QUIZ.questions[a.idx].section === "senhas").length,
+    answers: state.answers.map(a => ({
+      q: a.idx+1,
+      section: QUIZ.questions[a.idx].section,
+      choice: a.choice,
+      correct: a.correct,
+    })),
+    userAgent: navigator.userAgent.slice(0, 200),
+  };
+  if (!ENDPOINT_URL){
+    console.log("[CULTSEC quiz] sem ENDPOINT_URL configurado. Payload:", payload);
+    $("#send-status").textContent = "(modo dev: dados no console do browser)";
+    return;
+  }
+  try {
+    await fetch(ENDPOINT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {"Content-Type":"text/plain;charset=utf-8"},
+      body: JSON.stringify(payload),
+    });
+    $("#send-status").textContent = "Respostas enviadas ‚úì";
+    $("#send-status").classList.add("sent");
+  } catch(err) {
+    console.error("envio falhou:", err);
+    $("#send-status").textContent = "N√£o consegui enviar suas respostas. Recarregue e tente de novo, ou avise a TI.";
+    $("#send-status").classList.add("fail");
+  }
+}
+
+$("#btn-restart").addEventListener("click", () => location.reload());
+</script>
+</body>
+</html>
